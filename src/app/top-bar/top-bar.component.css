@@ -1,4 +1,12 @@
+.store__logo {
+    display: inline-flex;
+    align-items: center;
+}
 
+.store__logo i.material-icons {
+    color: white;
+    padding-left: 10px;
+}
 
 /*
 Copyright Google LLC. All Rights Reserved.
