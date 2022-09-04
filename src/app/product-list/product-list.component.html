@@ -1,44 +1,46 @@
-<div class="products__title">
-  <h2>Products in stock:</h2>
-</div>
+<div class="container">
+  <div class="products__title">
+    <h2>Products in stock:</h2>
+  </div>
 
-<div class="products__catalog">
-  <div class="products__row">
-    <div class="product__card" *ngFor="let product of products">
-      <div class="card__img">
-        <img
-          width="200px"
-          [src]="product.imgUrl"
-          [alt]="product.name + ' image'"
-        />
-      </div>
-      <div class="card__title">
-        <h3>
-          <a
-            [title]="product.name + ' details'"
-            [routerLink]="['/products', product.id]"
-          >
-            {{ product.name }}
-          </a>
-        </h3>
-      </div>
-      <div class="card__description">
-        <p *ngIf="product.description">
-          {{ product.description }}
-        </p>
-      </div>
-      <div class="bottom__elements">
-        <div class="buttons">
-          <div class="share__button">
-            <button type="button" (click)="share()">Share</button>
+  <!-- <div class="products__catalog"> -->
+    <div class="products__wrapper">
+      <div class="product__card" *ngFor="let product of products">
+        <div class="card__img">
+          <img
+            width="200px"
+            [src]="product.imgUrl"
+            [alt]="product.name + ' image'"
+          />
+        </div>
+        <div class="card__title">
+          <h3>
+            <a
+              [title]="product.name + ' details'"
+              [routerLink]="['/products', product.id]"
+            >
+              {{ product.name }}
+            </a>
+          </h3>
+        </div>
+        <div class="card__description">
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+        </div>
+        <div class="bottom__elements">
+          <div class="buttons">
+            <div class="share__button">
+              <button type="button" (click)="share()">Share</button>
+            </div>
+            <div class="notify__button">
+              <app-product-alerts
+                [product]="product"
+                (notify)="onNotify()"
+              ></app-product-alerts>
+            </div>
           </div>
-          <div class="notify__button">
-            <app-product-alerts
-              [product]="product"
-              (notify)="onNotify()"
-            ></app-product-alerts>
-          </div>
-      </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
