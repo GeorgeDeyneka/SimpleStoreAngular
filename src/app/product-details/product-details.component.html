@@ -1,9 +1,28 @@
 <div class="details__container">
   <div *ngIf="product">
-    <img [src]="product.imgUrl" [alt]="product.name + ' image'" width="300px">
-    <h3>{{ product.name }}</h3>
-    <h4>{{ product.price | currency }}</h4>
+  <h1>{{ product.productType + ' ' + product.name }}</h1>
+    <img
+      [src]="product.imgUrl.one"
+      [alt]="product.name + ' image'"
+      width="300px"
+    />
+      <img *ngIf="product.imgUrl.two"
+      [src]="product.imgUrl.two"
+      [alt]="product.name + ' image'"
+      width="300px"
+      />
+    <img *ngIf="product.imgUrl.three"
+      [src]="product.imgUrl.three"
+      [alt]="product.name + ' image'"
+      width="300px"
+    />
+    <h4>{{ product.price.actually | currency }}</h4>
     <p>{{ product.description }}</p>
     <button type="button" (click)="addToCart(product)">Buy</button>
+    <button type="button" (click)="share()">Share</button>
+    <app-product-alerts
+      [product]="product"
+      (notify)="onNotify()"
+    ></app-product-alerts>
   </div>
 </div>
